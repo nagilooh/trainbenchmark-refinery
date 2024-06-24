@@ -1,5 +1,5 @@
 dependencies {
-  compile group: 'commons-lang', name: 'commons-lang', version: commonsLangVersion
-  compile group: 'com.google.guava', name: 'guava', version: guavaVersion
-  compile group: 'com.esotericsoftware', name: 'kryo-shaded', version: kryoVersion
+  implementation group: 'commons-lang', name: 'commons-lang', version: commonsLangVersion
+  implementation group: 'com.google.guava', name: 'guava', version: guavaVersion
+  implementation group: 'com.esotericsoftware', name: 'kryo-shaded', version: kryoVersion
 }

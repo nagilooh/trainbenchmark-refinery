@@ -16,4 +16,19 @@ public class ApocHelper {
 		}
 	}
 
+//	// https://github.com/neo4j-contrib/neo4j-apoc-procedures/blob/9d5e1ce9d00992c78a8d2a985f6e89cfb20d41cd/test-utils/src/main/java/apoc/util/TestUtil.java
+//	public static void registerProcedure(GraphDatabaseService db, Class<?>... procedures) {
+//		GlobalProcedures globalProcedures =
+//			((GraphDatabaseAPI) db).getDependencyResolver().resolveDependency(GlobalProcedures.class);
+//		for (Class<?> procedure : procedures) {
+//			try {
+//				globalProcedures.registerProcedure(procedure, true);
+//				globalProcedures.registerFunction(procedure, true);
+//				globalProcedures.registerAggregationFunction(procedure, true);
+//			} catch (KernelException e) {
+//				throw new RuntimeException("while registering " + procedure, e);
+//			}
+//		}
+//	}
+
 }

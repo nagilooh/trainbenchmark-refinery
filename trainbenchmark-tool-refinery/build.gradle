@@ -1,0 +1,15 @@
+apply plugin: 'com.github.johnrengelman.shadow'
+
+shadowJar {
+    archiveClassifier = 'fat'
+    mergeServiceFiles()
+    manifest { attributes 'Main-Class': 'hu.bme.mit.trainbenchmark.benchmark.refinery.RefineryBenchmarkMain' }
+}
+
+dependencies {
+    implementation 'tools.refinery:refinery-store-query'
+    implementation 'tools.refinery:refinery-store-query-interpreter'
+    implementation project(':trainbenchmark-config')
+    implementation project(':trainbenchmark-tool')
+    implementation project(':trainbenchmark-format-refinery')
+}

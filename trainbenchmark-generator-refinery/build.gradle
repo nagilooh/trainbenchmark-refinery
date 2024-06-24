@@ -1,0 +1,13 @@
+apply plugin: 'com.github.johnrengelman.shadow'
+
+shadowJar {
+	archiveClassifier = 'fat'
+	manifest { attributes 'Main-Class': 'hu.bme.mit.trainbenchmark.generator.refinery.RefineryGeneratorMain' }
+}
+
+dependencies {
+	implementation group: 'commons-io', name: 'commons-io', version: commonsIoVersion
+	implementation project(':trainbenchmark-config')
+	implementation project(':trainbenchmark-generator')
+	implementation project(':trainbenchmark-format-refinery')
+}

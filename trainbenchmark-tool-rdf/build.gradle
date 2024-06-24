@@ -1,4 +1,4 @@
 dependencies {
-  compile project(':trainbenchmark-tool')
-  compile project(':trainbenchmark-format-rdf')
+  implementation project(':trainbenchmark-tool')
+  implementation project(':trainbenchmark-format-rdf')
 }

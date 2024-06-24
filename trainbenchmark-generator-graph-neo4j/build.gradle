@@ -1,13 +1,19 @@
 apply plugin: 'com.github.johnrengelman.shadow'
 
 shadowJar {
-	classifier = 'fat'
+	archiveClassifier = 'fat'
+	zip64 = true
 	mergeServiceFiles()
 	manifest { attributes 'Main-Class': 'hu.bme.mit.trainbenchmark.generator.graph.neo4j.Neo4jGraphGeneratorMain' }
 }
 
 dependencies {
-	compile group: 'commons-io', name: 'commons-io', version: commonsIoVersion
-	compile project(':trainbenchmark-generator')
-	compile project(':trainbenchmark-format-graph-neo4j')
+	implementation group: 'com.google.guava', name: 'guava', version: guavaVersion
+	implementation group: 'commons-io', name: 'commons-io', version: commonsIoVersion
+	implementation group: 'org.neo4j', name: 'neo4j-graphdb-api', version: neo4jVersion
+	implementation group: 'org.neo4j', name: 'neo4j-kernel', version: neo4jVersion
+	implementation group: 'org.neo4j.procedure', name: 'apoc', version: neo4jApocVersion
+	implementation project(':trainbenchmark-config')
+	implementation project(':trainbenchmark-generator')
+	implementation project(':trainbenchmark-format-graph-neo4j')
 }
