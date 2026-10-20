@@ -1,4 +1,4 @@
-package hu.bme.mit.trainbenchmark.generator.refinery.config;
+package hu.bme.mit.trainbenchmark.generator.refinery.api.config;
 
 import hu.bme.mit.trainbenchmark.generator.config.GeneratorConfig;
 import hu.bme.mit.trainbenchmark.generator.config.GeneratorConfigBase;

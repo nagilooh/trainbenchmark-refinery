@@ -1,7 +1,7 @@
-package hu.bme.mit.trainbenchmark.generator.refinery;
+package hu.bme.mit.trainbenchmark.generator.refinery.problem;
 
 import hu.bme.mit.trainbenchmark.generator.ModelSerializer;
-import hu.bme.mit.trainbenchmark.generator.refinery.config.RefineryGeneratorConfig;
+import hu.bme.mit.trainbenchmark.generator.refinery.problem.config.RefineryProblemGeneratorConfig;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,17 +9,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
-public class RefinerySerializer extends ModelSerializer<RefineryGeneratorConfig> {
+public class RefineryProblemSerializer extends ModelSerializer<RefineryProblemGeneratorConfig> {
 
 	protected BufferedWriter writer;
 
-	public RefinerySerializer(final RefineryGeneratorConfig generatorConfig) {
+	public RefineryProblemSerializer(final RefineryProblemGeneratorConfig generatorConfig) {
 		super(generatorConfig);
 	}
 
 	@Override
 	public String syntax() {
-		return "Refinery";
+		return "RefineryProblem";
 	}
 
 	public void write(final String s) throws IOException {
@@ -31,6 +31,7 @@ public class RefinerySerializer extends ModelSerializer<RefineryGeneratorConfig>
 
 		final String problemPath = gc.getConfigBase().getModelPathWithoutExtension() + ".problem";
 		final File cypherFile = new File(problemPath);
+		System.out.println("Writing problem to: " + cypherFile.getAbsolutePath());
 		writer = new BufferedWriter(new FileWriter(cypherFile));
 	}
 
@@ -42,6 +43,18 @@ public class RefinerySerializer extends ModelSerializer<RefineryGeneratorConfig>
 	@Override
 	public Object createVertex(int id, String type, Map<String, ?> attributes, Map<String, Object> outgoingEdges, Map<String, Object> incomingEdges) throws IOException {
 		write(type + "(n" + id + ").");
+		for(Map.Entry<String, ?> entry : attributes.entrySet()) {
+			var key = entry.getKey();
+			if (key.equals("length") || key.equals("active")) {
+				write(entry.getKey() + "(n" + id + "): " + entry.getValue() + ".");
+			} else if (key.equals("position") || key.equals("currentPosition")) {
+				write(entry.getKey() + "(n" + id + ", Position::" + entry.getValue() + ").");
+			} else if (key.equals("signal")) {
+				write(entry.getKey() + "(n" + id + ", Signal::" + entry.getValue() + ").");
+			} else {
+				write(entry.getKey() + "(n" + id + ", " + entry.getValue() + ").");
+			}
+		}
 		for(Map.Entry<String, Object> entry : outgoingEdges.entrySet()) {
 			write(entry.getKey() + "(n" + id + ", n" + entry.getValue() + ").");
 		}

@@ -13,12 +13,12 @@
 package hu.bme.mit.trainbenchmark.config;
 
 public abstract class AbstractConfigBase {
-	
+
 	public AbstractConfigBase() {
 	}
 
 	public String getWorkspaceDir() {
-		return "../";
+		return "";
 	}
 
 	public String getModelDir() {

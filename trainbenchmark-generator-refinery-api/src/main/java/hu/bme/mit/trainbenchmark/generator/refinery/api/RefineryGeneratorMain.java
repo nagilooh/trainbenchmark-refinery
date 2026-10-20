@@ -1,8 +1,8 @@
-package hu.bme.mit.trainbenchmark.generator.refinery;
+package hu.bme.mit.trainbenchmark.generator.refinery.api;
 
 import hu.bme.mit.trainbenchmark.generator.ModelGenerator;
 import hu.bme.mit.trainbenchmark.generator.ScalableGeneratorFactory;
-import hu.bme.mit.trainbenchmark.generator.refinery.config.RefineryGeneratorConfig;
+import hu.bme.mit.trainbenchmark.generator.refinery.api.config.RefineryGeneratorConfig;
 
 public class RefineryGeneratorMain {
 
